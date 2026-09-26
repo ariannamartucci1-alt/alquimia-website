@@ -63,3 +63,6 @@ h1,h2,h3,p{overflow-wrap:break-word}
   .page-hero{padding-top:112px}
   .waitlist-page .page-hero,.waitlist-page .waitlist{min-height:auto}
 }
+
+/* Home hero CTA position */
+@media(min-width:801px){.hero-film .film-copy .btn{align-self:flex-start;transform:translateX(-3vw)}.hero-film .film-copy .btn:hover{transform:translate(-3vw,-1px)}}

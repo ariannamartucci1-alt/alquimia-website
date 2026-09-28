@@ -38,13 +38,11 @@ if(form){
     if(submit)submit.disabled=true;
 
     try{
-     const response=await fetch('https://hook.eu1.make.com/qmntbqppprhphlb93mcpgikabl7qskdd',{
+     await fetch('https://hook.eu1.make.com/.....',{
   method:'POST',
+  mode:'no-cors',
   body:new URLSearchParams(data)
 });
-
-      if(!response.ok)throw new Error('Webhook request failed');
-
       box.innerHTML='<div class="success-state"><div class="kicker">Alquimia</div><h2 class="section-title">GRACIAS POR FORMAR PARTE.</h2><p>Te avisaremos cuando haya nuevas piezas, historias y lanzamientos.</p><a class="btn" href="index.html">Volver al inicio</a></div>';
 
     }catch(error){

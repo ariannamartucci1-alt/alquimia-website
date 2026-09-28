@@ -1,20 +1,41 @@
 const menu=document.querySelector('.menu');
 const nav=document.querySelector('.nav');
-if(menu&&nav){menu.addEventListener('click',()=>{nav.classList.toggle('open');menu.setAttribute('aria-expanded',nav.classList.contains('open'));});}
-document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav&&nav.classList.remove('open')));
+
+if(menu&&nav){
+  menu.addEventListener('click',()=>{
+    nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded',nav.classList.contains('open'));
+  });
+}
+
+document.querySelectorAll('.nav a').forEach(a=>{
+  a.addEventListener('click',()=>nav&&nav.classList.remove('open'));
+});
 
 const current=location.pathname.split('/').pop()||'index.html';
+
 document.querySelectorAll('.nav a').forEach(a=>{
   const href=a.getAttribute('href');
-  if(href===current || (current===''&&href==='index.html')){a.classList.add('active');a.setAttribute('aria-current','page');}
+  if(href===current || (current===''&&href==='index.html')){
+    a.classList.add('active');
+    a.setAttribute('aria-current','page');
+  }
 });
 
 const heroFilm=document.querySelector('#hero-film');
+
 if(heroFilm){
   const film=heroFilm.dataset.film;
-  fetch(film,{method:'HEAD'}).then(r=>{
-    if(r.ok){heroFilm.src=film;heroFilm.load();heroFilm.play().catch(()=>{});}
-  }).catch(()=>{});
+
+  fetch(film,{method:'HEAD'})
+    .then(r=>{
+      if(r.ok){
+        heroFilm.src=film;
+        heroFilm.load();
+        heroFilm.play().catch(()=>{});
+      }
+    })
+    .catch(()=>{});
 }
 
 const form=document.querySelector('#waitlist-form');
@@ -38,15 +59,14 @@ if(form){
     if(submit)submit.disabled=true;
 
     try{
-     await fetch('https://hook.eu1.make.com/gqk8nvhyjg1bfxu2xgrsxzv6rf1dv9xs',{
-  method:'POST',
-  mode:'no-cors',
-  body:new URLSearchParams(data)
-});
+      await fetch('https://hook.eu1.make.com/gqk8nvhyjg1bfxu2xgrsxzv6rf1dv9xs',{
+        method:'POST',
+        mode:'no-cors',
+        body:new URLSearchParams(data)
+      });
+
       box.innerHTML='<div class="success-state"><div class="kicker">Alquimia</div><h2 class="section-title">GRACIAS POR FORMAR PARTE.</h2><p>Te avisaremos cuando haya nuevas piezas, historias y lanzamientos.</p><a class="btn" href="index.html">Volver al inicio</a></div>';
-
     }catch(error){
-
       if(submit)submit.disabled=false;
 
       const message=form.querySelector('.form-message');

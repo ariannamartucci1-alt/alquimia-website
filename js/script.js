@@ -38,7 +38,7 @@ if(form){
     if(submit)submit.disabled=true;
 
     try{
-     await fetch('https://hook.eu1.make.com/.....',{
+     await fetch('https://hook.eu1.make.com/gqk8nvhyjg1bfxu2xgrsxzv6rf1dv9xs,{
   method:'POST',
   mode:'no-cors',
   body:new URLSearchParams(data)
